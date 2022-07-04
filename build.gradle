@@ -21,17 +21,17 @@ apply plugin: 'maven-publish'
 version = '0.1'
 
 jar {
-    
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    manifest {
+        attributes 'Title': 'Simple JMS Example', 'Version': version
+        attributes 'Main-Class': 'com.github.rnowling.simplejms.CLIDriver'
+    }
     from {
-        configurations.runtime.collect { 
+        configurations.runtimeClasspath.collect {
             it.isDirectory() ? it : zipTree(it)
         }
-    } 
-
-    manifest {
-	attributes 'Title': 'Simple JMS Example', 'Version': version
-	attributes 'Main-Class': 'com.github.rnowling.simplejms.CLIDriver'
     }
+
 }
 
 repositories {
@@ -57,5 +57,6 @@ test {
 
 dependencies {
     implementation group: 'org.apache.activemq', name: 'activemq-all', version: '5.17.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
     testImplementation 'junit:junit:4.13.2'
 }
