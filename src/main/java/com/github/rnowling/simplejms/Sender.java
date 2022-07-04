@@ -10,6 +10,8 @@ import javax.jms.TopicPublisher;
 import javax.jms.TopicSession;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Sender
 {
@@ -17,7 +19,9 @@ public class Sender
 	TopicPublisher publisher;
 	TopicSession session;
 	String username;
-	
+
+	private final static SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
 	public Sender(String topicFactory, String topicName, String username) throws NamingException, JMSException
 	{
 		InitialContext ctx = new InitialContext();
@@ -41,7 +45,8 @@ public class Sender
 	
 	public void sendMessage(String text) throws JMSException
 	{
-		TextMessage message = session.createTextMessage(username + ": " + text);
+		String msg  = String.format( "%s@%s : %s",  fmt.format(new Date()), username ,text);
+		TextMessage message = session.createTextMessage(msg);
 		publisher.publish(message);
 	}
 }

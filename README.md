@@ -27,14 +27,39 @@ Or for Linux:
 
 After starting ActiveMQ, you can run the chat programs in other terminals.  Each terminal should be set to the JMS example directory.  To run the example, in each terminal type:
 
-    $ java -cp build/libs/simple-jms-example-0.1.jar:: com.github.rnowling.simplejms.CLIDriver TopicCF topic1 NAME
+    $ java -cp build/libs/simple-jms-example-0.1.jar:: com.github.rnowling.simplejms.CLIDriver TopicCF topic1 NAME [mode=r|s|d]
 
 where `NAME` is the user's name.
 
+## Dual Mode
+In default mode - that is dual, it acts as sender and receiver.
+
 Then simply type something and press enter.  You should see output like so:
 
+    $ java -cp build/libs/simple-jms-example-0.1.jar:: com.github.rnowling.simplejms.CLIDriver TopicCF topic1 [d]
+
     this is a test
-    Received: RJ: this is a test
+    Received: timestamp@user : this is a test
     exit
 
 Type `exit` when you want to quit.  ActiveMQ can be exited by pressing Ctrl-C.
+
+## Sender Mode
+
+    $ java -cp build/libs/simple-jms-example-0.1.jar:: com.github.rnowling.simplejms.CLIDriver TopicCF topic1 s
+
+Simply type something and press enter.  You should see output like so:
+
+    this is a test
+    Received: timestamp@user : this is a test
+    exit
+
+Type `exit` when you want to quit.  ActiveMQ can be exited by pressing Ctrl-C.
+
+## Receiver Mode
+
+    $ java -cp build/libs/simple-jms-example-0.1.jar:: com.github.rnowling.simplejms.CLIDriver TopicCF topic1 r
+
+Simply wait for sender to send something.
+Can be exited by pressing Ctrl-C.
+
