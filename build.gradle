@@ -16,7 +16,7 @@
 apply plugin: 'eclipse'
 apply plugin: 'groovy'
 apply plugin: 'java' 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 version = '0.1'
 
@@ -56,7 +56,6 @@ test {
 }
 
 dependencies {
-    compile 'org.apache.activemq:activemq-all:5.12.0'
-    
-    testCompile 'junit:junit:4.+'
+    implementation group: 'org.apache.activemq', name: 'activemq-all', version: '5.17.1'
+    testImplementation 'junit:junit:4.13.2'
 }

@@ -13,9 +13,9 @@ I needed to add the [Apache ActiveMQ](http://activemq.apache.org/) dependency to
 
 Running
 -------
-You'll need to download the [latest release](http://activemq.apache.org/activemq-5120-release.html) of ActiveMQ.  Untar the file:
+You'll need to download the [latest release](https://activemq.apache.org/components/classic/download/) of ActiveMQ.  Untar the file:
 
-    $ tar -xzvf apache-activemq-5.12.0-bin.tar.gz
+    $ tar -xzvf apache-activemq-5.17.1-bin.tar.gz
 
 Then run one of the wrappers in local mode:
 
